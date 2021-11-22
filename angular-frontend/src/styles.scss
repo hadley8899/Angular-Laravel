@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "assets/scss/button-ripple";
+@import "assets/scss/in-flight";
+@import "node_modules/animate.css/animate.min";
+// Hack for the bootstrap modal showing as grayed out!
+.modal-backdrop {
+  z-index: 1020 !important;
+}
+
+// Make background a little darker
+body {
+  background: #f8f8f8;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.h1 {
+  font-size: 1.25rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.avatar-preview {
+  max-height: 200px;
+}
+
+// Table hacks
+.table {
+  width: 100%;
+
+  th,
+  td {
+    padding: 0.2rem;
+    vertical-align: top;
+    border-top: none;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: none;
+    padding: 0.75rem;
+  }
+}
+
+.dataTables_empty {
+  display: none;
+}

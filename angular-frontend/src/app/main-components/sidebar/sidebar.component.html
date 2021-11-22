@@ -1,0 +1,257 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a [routerLink]="['/']" class="brand-link">
+    <img
+      src="{{accountAvatar}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">{{accountName}}</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <div class="user-panel mt-3 mb-3 d-flex">
+
+      <div class="image">
+        <img src="{{ profileImage }}" alt="User Image">
+      </div>
+
+      <div class="info">
+        <p class="">
+          <a [routerLink]="['/settings']" class="">{{ loggedInUser.name }}</a>
+        </p>
+
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <i class="nav-icon fas fa-tachometer-alt"></i>&nbsp;<p>Dashboard</p>
+          </a>
+        </li>
+
+        <li class="nav-item has-treeview active" *ngIf="hasPermission('view customers')">
+          <a href="#" class="nav-link">
+            <i class="nav-icon ion ion-person-stalker"></i>
+            <p>
+              Customers
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/customers']"
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>All Customers</p>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="hasPermission('add customer')">
+              <a [routerLink]="['/customers/new']" class="nav-link" routerLinkActive="active">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>New Customer</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview active" *ngIf="hasPermission('view jobs')">
+          <a href="#" class="nav-link">
+            <i class="nav-icon ion ion-briefcase"></i>
+            <p>
+              Jobs
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item" *ngIf="hasPermission('add job')">
+              <a [routerLink]="['/jobs','new']" class="nav-link" routerLinkActive="active">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>New Job</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/jobs', 'type', 'user']"
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>My Jobs</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/jobs', 'type', 'all']"
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>All Jobs</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/jobs', 'type', 'mot']"
+                class="nav-link"
+                routerLinkActive="active"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>MOTS</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/jobs', 'type','service']"
+                class="nav-link"
+                routerLinkActive="active"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>Services</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/jobs', 'type','repair']"
+                class="nav-link"
+                routerLinkActive="active"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>Repairs</p>
+              </a>
+            </li>
+
+            <!-- An element like this may be done on the dashboard -->
+<!--            <li class="nav-item">-->
+<!--              <a-->
+<!--                [routerLink]="['/jobs-board']"-->
+<!--                class="nav-link"-->
+<!--                routerLinkActive="active"-->
+<!--                [routerLinkActiveOptions]="{ exact: true }"-->
+<!--              >-->
+<!--                <i class="ion ion-cube nav-icon"></i>-->
+<!--                <p>Job Board</p>-->
+<!--              </a>-->
+<!--            </li>-->
+
+
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview active" *ngIf="hasPermission('view invoices')">
+
+          <a href="#" class="nav-link">
+            <i class="nav-icon ion ion-document"></i>
+            <p>
+              Invoices
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item" *ngIf="hasPermission('add job')">
+              <a [routerLink]="['/invoices', 'status', 'all']" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-list nav-icon"></i>
+                <p>All Invoices</p>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="hasPermission('add job')">
+              <a [routerLink]="['/invoices', 'status', 'unpaid']" class="nav-link" routerLinkActive="active">
+                <i class="fa fa-list nav-icon"></i>
+                <p>Unpaid Invoices</p>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="hasPermission('add job')">
+              <a [routerLink]="['/invoices', 'status', 'paid']" class="nav-link" routerLinkActive="active">
+                <i class="fa fa-list nav-icon"></i>
+                <p>Paid Invoices</p>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="hasPermission('add job')">
+              <a [routerLink]="['/invoices', 'status', 'draft']" class="nav-link" routerLinkActive="active">
+                <i class="fa fa-list nav-icon"></i>
+                <p>Draft Invoices</p>
+              </a>
+            </li>
+
+            <li class="nav-item" *ngIf="hasPermission('add job')">
+              <a [routerLink]="['/invoices', 'new']" class="nav-link" routerLinkActive="active">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>New Invoice</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview active" *ngIf="hasPermission('view vehicles')">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-car-alt"></i>
+            <p>
+              Vehicles
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/vehicles']"
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <i class="fa fa-list nav-icon"></i>
+                <p>All Vehicles</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                [routerLink]="['/vehicles', 'new']"
+                class="nav-link"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <i class="fa fa-plus nav-icon"></i>
+                <p>New Vehicle</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/settings']" class="nav-link" routerLinkActive="active">
+            <i class="nav-icon fas fa-cogs"></i>&nbsp;<p>Settings</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
